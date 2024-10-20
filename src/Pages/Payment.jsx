@@ -27,9 +27,65 @@ function PaymentForm() {
     return <Navigate to="/done" />;
   }
  
+  const [formValues, setFormValues] = useState({
+    field1: '',
+    field2: '',
+    field3: '',
+    field4: '',
+    field5: ''
+  });
+
+  // State for validation errors
+  const [errors, setErrors] = useState({});
+
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value
+    });
+  };
+
+   // Validation function
+   const validate = () => {
+    const newErrors = {};
+
+    if (!formValues.field1) {
+      newErrors.field1 = 'Field 1 is required';
+    }
+    if (!formValues.field2) {
+      newErrors.field2 = 'Field 2 is required';
+    }
+    if (!formValues.field3) {
+      newErrors.field3 = 'Field 3 is required';
+    }
+    if (!formValues.field4) {
+      newErrors.field4 = 'Field 4 is required';
+    }
+    if (!formValues.field5) {
+      newErrors.field5 = 'Field 5 is required';
+    }
+    return newErrors;
+  };
    
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formErrors = validate();
+    setErrors(formErrors);
+
+    // If no errors, proceed with form submission
+    if (Object.keys(formErrors).length === 0) {
+      PaymentForm();
+      console.log('Form submitted successfully:', formValues);
+    }
+  };
+
 
   return (
+    <form onSubmit={handleSubmit}>
+      <div>
     <Container
       maxWidth="sm"
       sx={{
@@ -52,44 +108,72 @@ function PaymentForm() {
               label="Card Holder Name"
               variant="outlined"
               placeholder="Enter Card Holder Name"
+              name="field1"
+          value={formValues.field1}
+          onChange={handleChange}        
             />
+             {errors.field1 && <span style={{ color: 'red' }}>{errors.field1}</span>}
           </Grid>
+         
           <Grid item xs={12}>
             <TextField
               fullWidth
               label="Card Number"
               variant="outlined"
               placeholder="Enter Card Number"
+              type="text"
+          name="field2"
+          value={formValues.field2}
+          onChange={handleChange}
             />
+               {errors.field2 && <span style={{ color: 'red' }}>{errors.field2}</span>}
           </Grid>
+       
           <Grid item xs={6}>
             <TextField
               fullWidth
               label="Expiration Date"
               variant="outlined"
               placeholder="MM/YY"
+              type="text"
+              name="field3"
+              value={formValues.field3}
+              onChange={handleChange}
             />
+             {errors.field3 && <span style={{ color: 'red' }}>{errors.field3}</span>}
           </Grid>
+         
           <Grid item xs={6}>
             <TextField
               fullWidth
               label="CVC/CVV"
               variant="outlined"
               placeholder="123"
+              type="text"
+              name="field4"
+              value={formValues.field4}
+              onChange={handleChange}
             />
+                      {errors.field4 && <span style={{ color: 'red' }}>{errors.field4}</span>}
           </Grid>
+
           <Grid item xs={12}>
             <TextField
               fullWidth
               label="Amount"
               variant="outlined"
               placeholder="Enter Amount"
+              name="field5"
+              value={formValues.field5}
+              onChange={handleChange}
+            
             />
+               {errors.field5 && <span style={{ color: 'red' }}>{errors.field5}</span>}
           </Grid>
         </Grid>
 
         <Box mt={3} textAlign="center">
-          <Button
+          {/* <Button
             variant="contained"
             color="primary"
             sx={{
@@ -98,11 +182,14 @@ function PaymentForm() {
             }}
             onClick={handlepayment}
           >
-            Make Payment
-          </Button>
+            
+          </Button> */}
         </Box>
       </Box>
     </Container>
+    </div>
+      <button type="submit">Make Payment</button>
+    </form>
   );
 }
 
