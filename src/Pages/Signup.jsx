@@ -48,6 +48,7 @@ const Signup = () => {
     name: "",
     email: "",
     password: "",
+    confirmpassword:"",
   });
 
   const handleChange = (e) => {
@@ -122,6 +123,19 @@ const Signup = () => {
                       id="password"
                       autoComplete="new-password"
                       value={formData.password}
+                      onChange={handleChange}
+                    />
+                     </Grid>
+                    <Grid item xs={12}>
+                    <TextField
+                      required
+                      fullWidth
+                      name="confitmpassword"
+                      label="Confrim Password"
+                      type="password"
+                      id="confitmpassword"
+                      autoComplete="new-password"
+                      value={formData.confirmpassword}
                       onChange={handleChange}
                     />
                   </Grid>
