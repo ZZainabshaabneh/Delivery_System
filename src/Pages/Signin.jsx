@@ -2,9 +2,10 @@ import { AppProvider, SignInPage } from "@toolpad/core";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Box, Link,Grid } from "@mui/material";
 import "../App.css";
+import Navn from "../components/nav";
 import { Navigate } from "react-router-dom";
-import { useState } from "react";
-
+import { createContext, useState } from "react";
+ export const UserName = createContext();
 const theme = createTheme({
   palette: {
     primary: {
@@ -36,14 +37,19 @@ const theme = createTheme({
   },
 });
 
-const providers = [{ id: "credentials", name: "Email and password" }];
-
+const providers = [
+  { id: "credentials", name: "Email ,  Username and Password" },
+];
+ 
 const signIn = async (provider, formData, handleLogin) => {
+
+
   const promise = new Promise((resolve) => {
     setTimeout(() => {
+     
       const email = formData?.get("email");
       const password = formData?.get("password");
-
+   
       if (email === "zainab@gmail.com" && password === "123") {
         handleLogin();
         resolve({
@@ -60,7 +66,7 @@ const signIn = async (provider, formData, handleLogin) => {
   });
   return promise;
 };
-
+ 
 function Signin() {
   const [loggedIn, setLoggedIn] = useState(false);
    
@@ -71,12 +77,13 @@ function Signin() {
 
   
    if (loggedIn) {
-    return <Navigate to="/Services" />;
+    return <Navigate to="/Home" />;
   }
  
 
     return (
       <ThemeProvider theme={theme}>
+        <Navn/>
         <AppProvider theme={theme}>
           <Box
             sx={{

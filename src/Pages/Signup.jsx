@@ -1,6 +1,6 @@
 import { AppProvider } from "@toolpad/core";
 import { useState } from "react";
-import Navn from "../components/nav"
+import Navn from "../components/nav";
 import {
   Container,
   TextField,
@@ -48,6 +48,7 @@ const Signup = () => {
     name: "",
     email: "",
     password: "",
+    confirmpassword: "",
   });
 
   const handleChange = (e) => {
@@ -125,6 +126,19 @@ const Signup = () => {
                       onChange={handleChange}
                     />
                   </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      required
+                      fullWidth
+                      name="confirmpassword"
+                      label="Confirm Password"
+                      type="password"
+                      id="confirmpassword"
+                      autoComplete="new-password"
+                      value={formData.confirmpassword}
+                      onChange={handleChange}
+                    />
+                  </Grid>
                 </Grid>
                 <Button
                   type="submit"
@@ -135,11 +149,14 @@ const Signup = () => {
                   Sign Up
                 </Button>
                 <Grid container justifyContent="center">
-                 
-                    <Link href="/signin" variant="body2" style={{alignItems:"center"}}>
-                      Already have an account? <br/>Sign in
-                    </Link>
-                   
+                  <Link
+                    href="/signin"
+                    variant="body2"
+                    style={{ alignItems: "center" }}
+                  >
+                    Already have an account? <br />
+                    Sign in
+                  </Link>
                 </Grid>
               </Box>
             </Box>

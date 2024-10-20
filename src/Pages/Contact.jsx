@@ -1,10 +1,10 @@
 import Navn from "../components/nav";
-function Catalog() {
+function Contacts() {
   return (
     <>
       <Navn />
-      <h1>catalog Page</h1>;
+      <h1>Contact Page</h1>;
     </>
   );
 }
-export default Catalog;
+export default Contacts;

@@ -1,22 +1,18 @@
-
- import {
-  Typography,
-  Container,
-   Box,
-  Paper,
-  IconButton,
-} from "@mui/material";
+import { Typography, Container, Box, Paper, IconButton } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
-export const Foot= () => {
-  <>
+import "../App.css";
+export const Foot = () => {
+  return (
     <Paper
       elevation={3}
       style={{ backgroundColor: "#333", padding: "10px", color: "#fff" }}
+     
     >
-      <Container maxWidth="lg">
-        <Typography variant="body2" align="center">
+      <Container  >
+        <br/>
+        <Typography variant="body2" align="center" position={"relative"}>
           © 2024 Advanced Delivery System. All Rights Reserved
         </Typography>
         <Box textAlign="center" marginTop="10px">
@@ -32,6 +28,5 @@ export const Foot= () => {
         </Box>
       </Container>
     </Paper>
-    ;
-  </>;
-}
+  );
+};

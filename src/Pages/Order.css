@@ -2,11 +2,12 @@
 .order-container {
     font-family: Arial, sans-serif;
     margin: 50px auto;
-    width: 400px;
+    min-width: 1240px;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
     background-color: #f4fdfd;
+    
   }
   
   .header {

@@ -1,10 +1,8 @@
-
-import Navn from "../components/nav";
-import { Button} from "@mui/material";
-import { Foot } from "../components/footer";
+import {Af} from "../components/nav";
+ import { Foot } from "../components/footer";
+ import { useState } from "react";
 import { Navigate } from "react-router-dom";
-import { useState } from "react";
- 
+import { Button } from "@mui/material";
 function DeliverySystem() {
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -13,20 +11,19 @@ function DeliverySystem() {
   };
 
   if (loggedIn) {
-    return <Navigate to="/Signin" />;
+    return <Navigate to="/Services" />;
   }
  
+
   return (
     <div
       style={{
-       
-       maxWidth: "1280px",
+        maxWidth: "1280px",
         height: "100%",
         position: "relative",
-         
       }}
     >
-      <Navn/>
+      <Af />
       <img
         src="/static/images/89.png"
         alt="delivery service"
@@ -50,14 +47,12 @@ function DeliverySystem() {
           backgroundColor: "#046e63",
         }}
       >
-        SignIn To Order
+       Go to Service Page
       </Button>
-      
-        <Foot />
-     
+
+      <Foot />
     </div>
   );
 }
-
 
 export default DeliverySystem;

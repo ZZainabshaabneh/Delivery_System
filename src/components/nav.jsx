@@ -24,16 +24,21 @@ function Navn() {
             alt="logo"
             style={{ height: 45, marginRight: "20px", borderRadius: "50%" }}
           />
-          <Typography variant="h6" component="div" flexGrow="1">
+          <Typography
+            variant="h6"
+            component="div"
+            flexGrow="1"
+            position={"relative"}
+          >
             Delivery Service
           </Typography>
           <Button color="inherit" startIcon={<HomeIcon />} href="/">
             Home
           </Button>
-          <Button color="inherit" href="/Services">
-            Services
+          <Button color="inherit" href="/Catalog">
+            catalog
           </Button>
-          <Button color="inherit" href="/Foot">
+          <Button color="inherit" href="/Contact">
             Contact us
           </Button>
           <Button color="inherit" variant="outlined" onClick={handleLogin}>
@@ -71,13 +76,14 @@ export function Af() {
           <Typography variant="h6" component="div" flexGrow="1">
             Delivery Service
           </Typography>
-          <Button color="inherit" startIcon={<HomeIcon />} href="/">
+
+          <Button color="inherit" startIcon={<HomeIcon />} href="/Home">
             Home
           </Button>
           <Button color="inherit" href="/Services">
             Services
           </Button>
-          <Button color="inherit" href="/Footer">
+          <Button color="inherit" href="/Contact">
             Contact us
           </Button>
           <Button color="inherit" variant="outlined" onClick={handleLogin}>
