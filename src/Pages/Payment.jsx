@@ -56,114 +56,87 @@ const Signup = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-  };
+  
+   if (loggedIn) {
+    return <Navigate to="/done" />;
+  }
+ 
+   
 
   return (
-    <>
-      <Navn />
-      <Container component="main" maxWidth="xs">
-        <ThemeProvider theme={theme}>
-          <AppProvider theme={theme}>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                backgroundColor: "#e0f2f1",
-                padding: "20px",
-                borderRadius: "8px",
-                maxWidth: "400px",
-                margin: "auto",
-                marginTop: "100px",
-              }}
-            >
-              <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                <LockOutlinedIcon />
-              </Avatar>
-              <Typography component="h1" variant="h5">
-                Sign Up
-              </Typography>
-              <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
-                <Grid container spacing={2}>
-                  <Grid item xs={12}>
-                    <TextField
-                      required
-                      fullWidth
-                      id="name"
-                      label="Name"
-                      name="name"
-                      autoComplete="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      required
-                      fullWidth
-                      id="email"
-                      label="Email Address"
-                      name="email"
-                      autoComplete="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      required
-                      fullWidth
-                      name="password"
-                      label="Password"
-                      type="password"
-                      id="password"
-                      autoComplete="new-password"
-                      value={formData.password}
-                      onChange={handleChange}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      required
-                      fullWidth
-                      name="confirmpassword"
-                      label="Confirm Password"
-                      type="password"
-                      id="confirmpassword"
-                      autoComplete="new-password"
-                      value={formData.confirmpassword}
-                      onChange={handleChange}
-                    />
-                  </Grid>
-                </Grid>
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
-                >
-                  Sign Up
-                </Button>
-                <Grid container justifyContent="center">
-                  <Link
-                    href="/signin"
-                    variant="body2"
-                    style={{ alignItems: "center" }}
-                  >
-                    Already have an account? <br />
-                    Sign in
-                  </Link>
-                </Grid>
-              </Box>
-            </Box>
-          </AppProvider>
-        </ThemeProvider>
-      </Container>
-    </>
+    <Container
+      maxWidth="sm"
+      sx={{
+        backgroundColor: "#e0f7f9",
+        padding: "30px",
+        borderRadius: "10px",
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+        mt: 5,
+      }}
+    >
+      <Typography variant="h4" align="center" gutterBottom>
+        Payment Details
+      </Typography>
+      <Box component="form" sx={{ mt: 3 }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              ref={r}
+              fullWidth
+              label="Card Holder Name"
+              variant="outlined"
+              placeholder="Enter Card Holder Name"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label="Card Number"
+              variant="outlined"
+              placeholder="Enter Card Number"
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              fullWidth
+              label="Expiration Date"
+              variant="outlined"
+              placeholder="MM/YY"
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              fullWidth
+              label="CVC/CVV"
+              variant="outlined"
+              placeholder="123"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label="Amount"
+              variant="outlined"
+              placeholder="Enter Amount"
+            />
+          </Grid>
+        </Grid>
+
+        <Box mt={3} textAlign="center">
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{
+              backgroundColor: "#00695c",  
+              padding: "10px 20px",
+            }}
+            onClick={handlepayment}
+          >
+            Make Payment
+          </Button>
+        </Box>
+      </Box>
+    </Container>
   );
 };
 
