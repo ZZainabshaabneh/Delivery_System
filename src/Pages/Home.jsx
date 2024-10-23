@@ -19,7 +19,7 @@ function DeliverySystem() {
   return (
     <div
       style={{
-       
+
        maxWidth: "1280px",
         height: "100%",
         position: "relative",

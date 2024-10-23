@@ -5,7 +5,8 @@ import "../App.css";
 import Navn from "../components/nav";
 import { Navigate } from "react-router-dom";
 import { createContext, useState } from "react";
- export const UserName = createContext();
+export const UserName = createContext();
+ 
 const theme = createTheme({
   palette: {
     primary: {
@@ -38,12 +39,12 @@ const theme = createTheme({
 });
 
 const providers = [
-  { id: "credentials", name: "Email ,  Username and Password" },
+  { id: "credentials", name: "Email , Password" },
 ];
  
 const signIn = async (provider, formData, handleLogin) => {
-
-
+//const [userName, setUserName] = useState("zainab"); 
+ // <UserName.Provider value={userName}>{children}</UserName.Provider>;
   const promise = new Promise((resolve) => {
     setTimeout(() => {
      

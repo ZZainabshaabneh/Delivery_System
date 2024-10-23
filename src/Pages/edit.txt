@@ -1,0 +1,11 @@
+  <usename.Provider value={total}>{ Children}</usename.Provider>
+   <usename.Consumer>
+    {(amount) => { return <h3> {amount}</h3>;}}
+</usename.Consumer>
+  
+
+     <UserName.Consumer>
+        {(value) => {
+          return(<h1>HI  {value}</h1>)
+        }}
+      </UserName.Consumer>

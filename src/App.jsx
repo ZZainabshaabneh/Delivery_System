@@ -8,12 +8,12 @@ import PaymentForm from "./Pages/Payment"
 import Homepage from "./Pages/Homepage"
 import Done from "./Pages/Done";
 import Catalog from "./Pages/Cataloge"
+import OrderPage from "./Pages/OrderPage";
 import Contacts from "./Pages/Contact"
 export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<DeliverySystem />}></Route>
-
       <Route path="/Contact" element={<Contacts />}></Route>
       <Route path="/Home" element={<Homepage />}></Route>
       <Route path="/catalog" element={<Catalog />}></Route>
@@ -22,6 +22,7 @@ export const App = () => {
       <Route path="/Services" element={<Orderlist />}></Route>
       <Route path="/Items" element={<Items />}></Route>
       <Route path="/Payment" element={<PaymentForm />}></Route>
+      <Route path="/OrderPage" element={<OrderPage />}></Route>
       <Route path="/done" element={<Done />}></Route>
     </Routes>
   );

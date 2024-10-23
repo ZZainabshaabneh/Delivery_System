@@ -1,5 +1,5 @@
 import HomeIcon from "@mui/icons-material/Home";
-import { AppBar, Toolbar, Typography, Button } from "@mui/material"; // Ensure all imports are here
+import { AppBar, Toolbar, Typography, Button } from "@mui/material";  
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
 import "../App.css";
@@ -52,7 +52,6 @@ function Navn() {
 
 export default Navn;
 
-
 export function Af() {
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -80,7 +79,7 @@ export function Af() {
           <Button color="inherit" startIcon={<HomeIcon />} href="/Home">
             Home
           </Button>
-          <Button color="inherit" href="/Services">
+          <Button color="inherit" href="/OrderPage">
             Services
           </Button>
           <Button color="inherit" href="/Contact">
@@ -94,5 +93,3 @@ export function Af() {
     </>
   );
 }
-
- 
