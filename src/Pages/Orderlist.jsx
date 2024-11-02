@@ -1,12 +1,9 @@
-import { Button } from "@mui/material";
+import { Button, Box, Typography, Input, IconButton } from "@mui/material";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { Af } from "../components/nav";
-import "./Order.css";
 import { Foot } from "../components/footer";
 import { UserName } from "./Signin";
-//import { createContext } from "react";
-//export const usename = createContext();
 
 function Orderlist() {
   const [items, setItems] = useState([
@@ -60,54 +57,81 @@ function Orderlist() {
   };
 
   return (
-    <>
-      <div className="order-container">
-        <Af />
-        <header className="header">
-          <UserName.Consumer>
-            {(e) => {
-              return <h1>{e}</h1>;
+    <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <Af />
+      <Box sx={{ textAlign: "center", my: 4 }}>
+        <UserName.Consumer>
+          {(e) => <Typography variant="h4">{e}</Typography>}
+        </UserName.Consumer>
+        <Typography variant="h5">Online Food Orders</Typography>
+        <Typography>Select your favorite dishes and place an order!</Typography>
+      </Box>
+
+      <Box sx={{ width: "80%", maxWidth: "500px", mb: 4 }}>
+        <Typography variant="h6">Menu</Typography>
+        {items.map((item, index) => (
+          <Box
+            key={index}
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              mb: 2,
+              p: 2,
+              border: "1px solid #ddd",
+              borderRadius: "8px",
             }}
-          </UserName.Consumer>
-          <h2>Online Food Orders</h2>
-          <p>Select your favorite dishes and place an order!</p>
-        </header>
-        <div className="menu-section">
-          <h3>Menu</h3>
-          {items.map((item, index) => (
-            <div key={index} className="menu-item">
-              <span>
-                {item.name} - ${item.price}
-              </span>
-              <div className="quantity-control">
-                <button onClick={() => handleQuantityChange(index, -1)}>
-                  -
-                </button>
-                <input type="text" value={item.quantity} readOnly />
-                <button onClick={() => handleQuantityChange(index, 1)}>
-                  +
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="order-form">
-          <h3>Total of The Order: ${total}</h3>
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}{" "}
-          <form onSubmit={handleSubmit}>
-            <Button
-              onClick={handleList}
-              variant="contained"
-              sx={{ backgroundColor: "#00695c" }}
-            >
-              CheckOut
-            </Button>
-          </form>
-          <Af />
-        </div>
-      </div>
+          >
+            <Typography>
+              {item.name} - ${item.price}
+            </Typography>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <IconButton
+                onClick={() => handleQuantityChange(index, -1)}
+                sx={{ color: "primary.main" }}
+              >
+                -
+              </IconButton>
+              <Input
+                value={item.quantity}
+                readOnly
+                sx={{
+                  mx: 1,
+                  width: "40px",
+                  textAlign: "center",
+                }}
+              />
+              <IconButton
+                onClick={() => handleQuantityChange(index, 1)}
+                sx={{ color: "primary.main" }}
+              >
+                +
+              </IconButton>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+
+      <Box sx={{ width: "80%", maxWidth: "500px", textAlign: "center", mb: 4 }}>
+        <Typography variant="h6">Total of The Order: ${total}</Typography>
+        {errorMessage && (
+          <Typography color="error" sx={{ mb: 2 }}>
+            {errorMessage}
+          </Typography>
+        )}
+        <form onSubmit={handleSubmit}>
+          <Button
+            onClick={handleList}
+            variant="contained"
+            sx={{ backgroundColor: "#00695c", mt: 2 }}
+          >
+            CheckOut
+          </Button>
+        </form>
+      </Box>
+
       <Foot />
-    </>
+    </Box>
   );
 }
 
